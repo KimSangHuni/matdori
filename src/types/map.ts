@@ -1,3 +1,5 @@
+export type KakaoMap = typeof window.kakao | null;
+
 export type KakaoLatLng = { 
     latitude: number; 
     longitude: number;
