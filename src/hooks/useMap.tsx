@@ -9,11 +9,15 @@ export default function useMap<T>(containerRef: RefObject<T extends HTMLElement 
         (async () => {
             if (containerRef.current) {
             const { latitude, longitude } = await getCurrentPosition();
-              setMap(
-                new window.kakao.maps.Map(containerRef.current, {
-                  center: new window.kakao.maps.LatLng(latitude, longitude),
-                }),
-              );
+            const mapRef = new window.kakao.maps.Map(containerRef.current, {
+                center: new window.kakao.maps.LatLng(latitude, longitude),
+              });
+
+
+              const marker = getMarker(mapRef, { latitude, longitude });
+              marker.setMap(mapRef);
+              setMap(mapRef);
+
             }
           })();
     }, [containerRef]);
@@ -41,7 +45,7 @@ async function getCurrentPosition(): Promise<KakaoLatLng> {
 
 function getMarker(map:KakaoMap, location:KakaoLatLng) {
     return new window.kakao.maps.Marker({
-        map: map,
+        // map: map,
         position: new window.kakao.maps.LatLng(location.latitude, location.longitude)
     });
 }
