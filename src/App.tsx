@@ -1,11 +1,11 @@
-import KakaoMap from './components/KakaoMap'
+import Map from './components/NaverMap'
 import { HorizontalLayout } from './layouts/Layout'
 
+
 function App() {
+
   return (
-    <HorizontalLayout>
-      <KakaoMap />
-    </HorizontalLayout>
+    <Map />
   )
 }
 

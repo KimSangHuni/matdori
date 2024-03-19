@@ -5,7 +5,6 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  console.log(env) // 터미널에 선언한 환경변수들이 보인다.
   return {
     plugins: [
       react(),
@@ -13,7 +12,7 @@ export default defineConfig(({ mode }) => {
         minify: true,
         inject: {
           data: {
-            kakaoApiKey: env.VITE_KAKAO_MAP_KEY,
+            NAVER_MAP_KEY: env.VITE_NAVER_MAP_CLIENT_ID,
           },
         },
       }),
